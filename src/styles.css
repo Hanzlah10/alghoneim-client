@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,3 +18,35 @@
     background-color: #a71b4a;
     border-radius: 100vw;
   } */
+  :root {
+    --primary-color: #ED3833;
+  }
+  
+  .dark-mode {
+    --bg-color: #1F2937;
+    --text-color: #FFFFFF;
+  }
+  
+  body {
+    transition: background-color 0.3s, color 0.3s;
+  }
+  body {
+    @apply font-poppins;
+  }
+  
+  body.dark-mode {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  .text-ED3833 {
+    color: var(--primary-color);
+  }
+  
+  .hover\:text-ED3833:hover {
+    color: var(--primary-color);
+  }
+  
+  .focus\:text-ED3833:focus {
+    color: var(--primary-color);
+  }

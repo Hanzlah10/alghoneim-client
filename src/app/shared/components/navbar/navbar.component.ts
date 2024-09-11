@@ -23,6 +23,7 @@ import { Component, ElementRef, HostListener } from '@angular/core';
 })
 export class NavbarComponent {
   isMenuOpen = false;
+  isDarkMode = false;
   navItems = [
     { name: 'Home', link: '/' },
     // { name: 'About Us', link: '/About' },
@@ -36,6 +37,12 @@ export class NavbarComponent {
     // { name: 'Join Us', link: '/Join' },
     // { name: 'Contact US', link: '/Contact' }
   ];
+
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    document.body.classList.toggle('dark-mode');
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -52,9 +59,6 @@ export class NavbarComponent {
       this.isMenuOpen = false;
     }
   }
-  onToggleButtonClick(event: Event) {
-    event.stopPropagation(); // Stops the event from propagating to the document click listener
-    this.toggleMenu(); // Toggles the menu open/close state
-  }
+
 
 }

@@ -1,76 +1,87 @@
-<header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white text-sm py-3">
+<header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 transition-colors duration-300"
+    [ngClass]="{'bg-white text-gray-800': !isDarkMode, 'bg-gray-900 text-white': isDarkMode}">
     <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
         <div class="flex items-center justify-between">
-            <div class="sm:hidden">
-                <!-- Use (click)="onToggleButtonClick($event)" to toggle the menu -->
-                <button type="button" (click)="onToggleButtonClick($event)"
-                    class="relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none transition-all duration-100"
-                    aria-expanded="false" aria-controls="menuContent" aria-label="Toggle navigation">
-                    <!-- Menu Open SVG -->
-                    <svg *ngIf="!isMenuOpen" class="hs-collapse-open:hidden shrink-0 size-4"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" x2="21" y1="6" y2="6" />
-                        <line x1="3" x2="21" y1="12" y2="12" />
-                        <line x1="3" x2="21" y1="18" y2="18" />
-                    </svg>
-                    <svg *ngIf="isMenuOpen" class="hs-collapse-open:block shrink-0 size-4"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 6 6 18" />
-                        <path d="m6 6 12 12" />
-                    </svg>
-                </button>
-            </div>
-
-            <a class="flex items-center text-2xl sm:xl font-semibold focus:outline-none focus:opacity-80" href="#"
-                aria-label="Brand">
+            <a class="flex items-center text-2xl font-semibold focus:outline-none focus:opacity-80 transition-opacity duration-300"
+                href="#" aria-label="Brand">
                 <img class="h-10" src="../../../../assets/logo.png" alt="Logo">
             </a>
 
-            <div class="hidden sm:flex sm:items-center gap-2">
-                <ng-container *ngFor="let item of navItems">
-                    <a class="font-large font-bold text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400 m-1"
-                        href="{{ item.link }}">
-                        {{ item.name }}
-                    </a>
-                </ng-container>
+            <div class="sm:hidden flex items-center">
+                <!-- Dark mode toggle for mobile -->
+                <button (click)="toggleDarkMode()"
+                    class="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2"
+                    [ngClass]="{'focus:ring-gray-700': !isDarkMode, 'focus:ring-gray-400': isDarkMode}">
+                    <svg *ngIf="!isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    <svg *ngIf="isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+
+                <!-- Mobile menu toggle -->
+                <button type="button" (click)="toggleMenu()"
+                    class="ml-2 relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300"
+                    [ngClass]="{'bg-white text-gray-800 border-gray-200 focus:ring-gray-300': !isDarkMode, 'bg-gray-800 text-white border-gray-700 focus:ring-gray-600': isDarkMode}"
+                    aria-expanded="false" aria-controls="menuContent" aria-label="Toggle navigation">
+                    <svg *ngIf="!isMenuOpen" class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg *ngIf="isMenuOpen" class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
         </div>
 
-        <!-- Menu Content -->
-        <div id="menuContent" class="transition-all duration-300 ease-in-out transform origin-top overflow-hidden  border rounded-md
-        sm:block" [ngClass]="{
-        'opacity-100 translate-y-0': isMenuOpen,
-        'opacity-0 -translate-y-4 pointer-events-none': !isMenuOpen}">
-            <div class="flex flex-col sm:hidden  sm:ps-2">
-                <ng-container *ngFor="let item of navItems">
-                    <a class="font-large font-medium text-black hover:text-gray-400 focus:outline-none focus:text-gray-400 ml-1"
-                        href="{{ item.link }}">
-                        {{ item.name }}
-                    </a>
-                </ng-container>
-            </div>
+        <div class="hidden sm:flex sm:items-center gap-4">
+            <ng-container *ngFor="let item of navItems">
+                <a class="font-medium hover:text-ED3833 focus:outline-none focus:text-ED3833 transition-colors duration-300"
+                    href="{{ item.link }}">
+                    {{ item.name }}
+                </a>
+            </ng-container>
+            <!-- Dark mode toggle for desktop -->
+            <button (click)="toggleDarkMode()"
+                class="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-300"
+                [ngClass]="{'focus:ring-gray-700': !isDarkMode, 'focus:ring-gray-400': isDarkMode}">
+                <svg *ngIf="!isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+                <svg *ngIf="isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </button>
         </div>
     </nav>
-</header>
 
-<!-- <button type="button" (click)="toggleMenu()"
-                    class="hs-collapse-toggle relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-                    id="hs-navbar-example-collapse" aria-expanded="false" aria-controls="hs-navbar-example"
-                    aria-label="Toggle navigation" data-hs-collapse="#hs-navbar-example">
-                    <svg *ngIf="!isMenuOpen" class="hs-collapse-open:hidden shrink-0 size-4"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" x2="21" y1="6" y2="6" />
-                        <line x1="3" x2="21" y1="12" y2="12" />
-                        <line x1="3" x2="21" y1="18" y2="18" />
-                    </svg>
-                    <svg *ngIf="isMenuOpen" class="hs-collapse-open:block shrink-0 size-4"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 6 6 18" />
-                        <path d="m6 6 12 12" />
-                    </svg>
-                    <span class="sr-only">Toggle navigation</span>
-                </button> -->
+    <!-- Mobile Menu Content -->
+    <div id="menuContent" class="sm:hidden w-full transition-all duration-300 ease-in-out" [ngClass]="{
+             'max-h-screen opacity-100': isMenuOpen,
+             'max-h-0 opacity-0': !isMenuOpen,
+             'bg-white border-t border-gray-200': !isDarkMode,
+             'bg-gray-800 border-t border-gray-700': isDarkMode
+         }">
+        <div class="flex flex-col py-2 px-4">
+            <ng-container *ngFor="let item of navItems">
+                <a class="py-2 font-medium hover:text-ED3833 focus:outline-none focus:text-ED3833 transition-colors duration-300"
+                    href="{{ item.link }}">
+                    {{ item.name }}
+                </a>
+            </ng-container>
+        </div>
+    </div>
+</header>
