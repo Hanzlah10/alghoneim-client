@@ -22,7 +22,7 @@ module.exports = {
         palette: {
           fill: "var(--color-bg)",
           card: "var(--color-bg-side)",
-          dark: "var(--color-bg-dark)",
+          dark: "var(--color-bg)",
           // digitalCategory: "var(--digital-category-bgc)",
           // fashionCategory: "var(--fashion-category-bgc)",
           // beautyCategory: "var( --beauty-category-bgc)",

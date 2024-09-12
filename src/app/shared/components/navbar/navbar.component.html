@@ -1,4 +1,4 @@
-<header class="w-full py-2 sm:py-3 transition-colors duration-300 z-10 bg-palette-fill dark:bg-palette-dark shadow-sm">
+<header class="w-full py-2 sm:py-3 transition-colors duration-300 z-10 bg-palette-fill shadow-sm">
     <nav class="max-w-[95rem] mx-auto px-2 sm:px-4 flex items-center justify-between">
         <!-- Logo -->
         <a class="flex items-center focus:outline-none focus:opacity-80 transition-opacity duration-300 rounded-lg p-1"
@@ -9,7 +9,7 @@
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center justify-center flex-grow">
             <ng-container *ngFor="let item of navItems">
-                <a class="px-2 lg:px-4 py-2 font-medium text-sm lg:text-base text-palette-base hover:text-palette-primary focus:outline-none transition-colors duration-300"
+                <a class="px-2 lg:px-4 py-2 font-medium text-sm lg:text-base text-palette-base dark:text-palette-mute hover:text-palette-primary focus:outline-none transition-colors duration-300"
                     routerLink={{item.link}} routerLinkActive="text-palette-primary">
                     {{ item.name }}
                 </a>
@@ -52,14 +52,13 @@
 
     <!-- Mobile Menu Content -->
 
-    <div id="menuContent"
-        class="sm:hidden w-full transition-all duration-300 ease-in-out bg-palette-fill dark:bg-palette-dark" [ngClass]="{
+    <div id="menuContent" class="sm:hidden w-full transition-all duration-300 ease-in-out bg-palette-fill " [ngClass]="{
              'max-h-screen opacity-100': isMenuOpen,
              'max-h-0 hidden': !isMenuOpen,
          }">
         <div class="flex flex-col py-2 px-4">
             <ng-container *ngFor="let item of navItems">
-                <a class="py-2 font-medium text-sm text-palette-base hover:text-palette-primary focus:outline-none focus:text-palette-primary transition-colors duration-300"
+                <a class="py-2 font-medium text-sm text-palette-base dark:text-palette-mute hover:text-palette-primary focus:outline-none focus:text-palette-primary transition-colors duration-300"
                     routerLink={{item.link}} routerLinkActive="text-palette-primary">
                     {{ item.name }}
                 </a>
