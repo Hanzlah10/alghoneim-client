@@ -27,7 +27,6 @@ export class NavbarComponent {
   isDarkMode = false;
   navItems = [
     { name: 'Home', link: '/' },
-    // { name: 'About Us', link: '/About' },
     { name: 'Latest News', link: '/News' },
     { name: 'Flyer', link: '/Flyer' },
     { name: 'Special Products', link: '/SpecialProduct' },
@@ -35,8 +34,6 @@ export class NavbarComponent {
     { name: 'Recipe', link: '/Recipe' },
     { name: 'Tawseel', link: '/tawseel', target: '_blank' },
     { name: 'Stores', link: '/Stores' },
-    // { name: 'Join Us', link: '/Join' },
-    // { name: 'Contact US', link: '/Contact' }
   ];
 
 
