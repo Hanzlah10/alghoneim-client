@@ -69,9 +69,6 @@ export class CarouselComponent {
     clearInterval(this.slideInterval);
   }
 
-  // getTransformValue() {
-  //   const slideWidth = 100 / this.slides.length; // Assuming equal width slides
-  //   return `translateX(-${this.currentSlide * slideWidth}%)`;
-  // }
+
 }
 
