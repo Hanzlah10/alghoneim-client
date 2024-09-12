@@ -11,22 +11,22 @@ import { Component } from '@angular/core';
 export class CarouselComponent {
   slides = [
     {
-      imageUrl: '../../../../assets/carousel/sale1.webp',
+      imageUrl: '../../../../assets/new-carousel/pic1.jpg',
       title: 'Summer Sale Spectacular!',
       description: 'Enjoy up to 50% off on all summer essentials. Limited time offer!'
     },
     {
-      imageUrl: '../../../../assets/carousel/sale2.webp',
+      imageUrl: '../../../../assets/new-carousel/pic2.jpg',
       title: 'New Arrivals: Fall Collection',
       description: 'Discover our latest styles for the upcoming season. Shop now!'
     },
     {
-      imageUrl: '../../../../assets/carousel/sale5.webp',
+      imageUrl: '../../../../assets/new-carousel/pic3.jpg',
       title: 'Exclusive Online Deals',
       description: 'Shop from the comfort of your home and save big on our online exclusives.'
     },
     {
-      imageUrl: '../../../../assets/carousel/sale4.webp',
+      imageUrl: '../../../../assets/new-carousel/pic4.jpg',
       title: 'Clearance: Last Chance',
       description: "Final reductions on clearance items. Don't miss out on these incredible savings!"
     }
