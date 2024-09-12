@@ -1,80 +1,57 @@
-<header
-    class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 transition-colors duration-300 z-10 bg-palette-fill dark:bg-palette-dark shadow-sm ">
-    <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
-        <div class="flex items-center justify-between">
-            <!-- Mobile menu toggle -->
-            <div class="sm:hidden flex items-center">
-                <button (click)="toggleMenu()"
-                    class="ml-2 relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300"
-                    [ngClass]="{'bg-white text-gray-800 border-gray-200 focus:ring-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:focus:ring-gray-700': true}"
-                    aria-expanded="false" aria-controls="menuContent" aria-label="Toggle navigation">
-                    <svg *ngIf="!isMenuOpen" class="shrink-0 size-4 pointer-events-none"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                    <svg *ngIf="isMenuOpen" class="shrink-0 size-4 pointer-events-none"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <!-- logo  -->
-            <a class="flex items-center text-2xl font-semibold focus:outline-none focus:opacity-80 transition-opacity duration-300 bg-slate-400  rounded-lg p-1"
-                href="#" aria-label="Brand">
-                <img class="h-10" src="../../../../assets/logo.png" alt="Logo">
-            </a>
+<header class="w-full py-2 sm:py-3 transition-colors duration-300 z-10 bg-palette-fill dark:bg-palette-dark shadow-sm">
+    <nav class="max-w-[95rem] mx-auto px-2 sm:px-4 flex items-center justify-between">
+        <!-- Logo -->
+        <a class="flex items-center focus:outline-none focus:opacity-80 transition-opacity duration-300 rounded-lg p-1"
+            routerLink="/" aria-label="Brand">
+            <img class="h-8 sm:h-10" src="../../../../assets/logo.png" alt="Logo">
+        </a>
 
-            <div class="sm:hidden flex items-center">
-                <!-- Dark mode toggle for mobile -->
-                <button (click)="toggleDarkMode()"
-                    class="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-300"
-                    [ngClass]="{'focus:ring-gray-700 dark:focus:ring-gray-400': true}">
-                    <svg *ngIf="!isDarkMode" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 text-palette-base dark:text-palette-base" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                    <svg *ngIf="isDarkMode" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 text-palette-base dark:text-palette-base" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <div class="hidden sm:flex sm:items-center gap-4">
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center justify-center flex-grow">
             <ng-container *ngFor="let item of navItems">
-                <a class="font-medium text-base text-palette-base hover:text-palette-primary focus:outline-none transition-colors duration-300"
-                    routerLink={{item.link}} routerLinkActive="router-link-active">
+                <a class="px-2 lg:px-4 py-2 font-medium text-sm lg:text-base text-palette-base hover:text-palette-primary focus:outline-none transition-colors duration-300"
+                    routerLink={{item.link}} routerLinkActive="text-palette-primary">
                     {{ item.name }}
                 </a>
             </ng-container>
-            <!-- Dark mode toggle for desktop -->
+        </div>
+
+        <!-- Dark Mode Toggle and Mobile Menu Button -->
+        <div class="flex items-center">
             <button (click)="toggleDarkMode()"
-                class="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-300"
-                [ngClass]="{'focus:ring-gray-700 dark:focus:ring-gray-400': true}">
-                <svg *ngIf="!isDarkMode" xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 text-palette-base dark:text-palette-base" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+                class="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-300 text-palette-base hover:text-palette-primary"
+                [ngClass]="{'focus:ring-palette-primary': true}">
+                <svg *ngIf="!isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
-                <svg *ngIf="isDarkMode" xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 text-palette-base dark:text-palette-base" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+                <svg *ngIf="isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </button>
+
+            <!-- Mobile menu toggle -->
+            <button (click)="toggleMenu()"
+                class="md:hidden ml-2 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 text-palette-base hover:text-palette-primary"
+                [ngClass]="{'focus:ring-palette-primary': true}" aria-expanded="false" aria-controls="menuContent"
+                aria-label="Toggle navigation">
+                <svg *ngIf="!isMenuOpen" class="h-5 w-5 pointer-events-none " xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg *ngIf="isMenuOpen" class="h-5 w-5 pointer-events:none " xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
     </nav>
 
     <!-- Mobile Menu Content -->
+
     <div id="menuContent"
         class="sm:hidden w-full transition-all duration-300 ease-in-out bg-palette-fill dark:bg-palette-dark" [ngClass]="{
              'max-h-screen opacity-100': isMenuOpen,
@@ -82,8 +59,8 @@
          }">
         <div class="flex flex-col py-2 px-4">
             <ng-container *ngFor="let item of navItems">
-                <a class="py-2 font-normal text-base text-palette-base hover:text-palette-primary focus:outline-none focus:text-palette-primary transition-colors duration-300"
-                    routerLink={{item.link}} routerLinkActive="router-link-active">
+                <a class="py-2 font-medium text-sm text-palette-base hover:text-palette-primary focus:outline-none focus:text-palette-primary transition-colors duration-300"
+                    routerLink={{item.link}} routerLinkActive="text-palette-primary">
                     {{ item.name }}
                 </a>
             </ng-container>
