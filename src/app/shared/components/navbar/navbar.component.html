@@ -78,7 +78,7 @@
     <div id="menuContent"
         class="sm:hidden w-full transition-all duration-300 ease-in-out bg-palette-fill dark:bg-palette-dark" [ngClass]="{
              'max-h-screen opacity-100': isMenuOpen,
-             'max-h-0 opacity-0': !isMenuOpen,
+             'max-h-0 hidden': !isMenuOpen,
          }">
         <div class="flex flex-col py-2 px-4">
             <ng-container *ngFor="let item of navItems">
