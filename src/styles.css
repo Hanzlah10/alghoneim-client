@@ -18,14 +18,45 @@
     background-color: #a71b4a;
     border-radius: 100vw;
   } */
-  :root {
-    --primary-color: #ED3833;
-  }
+
+  @layer base {
+    :root {
+      --color-primary: #A71B4A;
+      --color-secondary:  #4a4c5a;
   
-  .dark-mode {
-    --bg-color: #1F2937;
-    --text-color: #FFFFFF;
+      --color-bg:#f3f4f5;
+      --color-bg-side:  #fcfdff;
+      --color-bg-black: 0, 0, 0;
+      /* --digital-category-bgc: #ade8f4;
+      --fashion-category-bgc: #ffddd2;
+      --beauty-category-bgc: #ddd92a;
+      --sport-category-bgc: #ffd60a;
+      --house-category-bgc: #ccd5ae;
+      --toy-category-bgc: #cce3de;
+      --stationery-category-bgc: #fbb13c; */
+  
+      --color-text-base: #424750;
+      --color-text-muted: #6b7280;
+      --color-text-side: #fff;
+    }
+  
+    .dark {
+      --color-bg:  #0f172a;
+      --color-bg-side: #1e293b;
+      /* --digital-category-bgc: #0d4c76;
+      --fashion-category-bgc: #892a19;
+      --beauty-category-bgc: #6d305f;
+      --sport-category-bgc: #650606;
+      --house-category-bgc: #164c4b;
+      --toy-category-bgc: #6d3d4b;
+      --stationery-category-bgc: #6a4202;
+   */
+      --color-text-base: #e2e8f0;
+      --color-text-muted: #8c9aaf;
+      --color-text-side: #fff;
+    }
   }
+
   
   body {
     transition: background-color 0.3s, color 0.3s;

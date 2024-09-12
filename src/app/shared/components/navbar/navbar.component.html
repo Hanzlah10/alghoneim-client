@@ -4,23 +4,23 @@
         <div class="flex items-center justify-between">
             <!-- Mobile menu toggle -->
             <div class="sm:hidden flex items-center">
-                <button type="button" (click)="toggleMenu()"
+                <button (click)="toggleMenu()"
                     class="ml-2 relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300"
                     [ngClass]="{'bg-white text-gray-800 border-gray-200 focus:ring-gray-300': !isDarkMode, 'bg-gray-800 text-white border-gray-700 focus:ring-gray-600': isDarkMode}"
                     aria-expanded="false" aria-controls="menuContent" aria-label="Toggle navigation">
-                    <svg *ngIf="!isMenuOpen" class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
+                    <svg *ngIf="!isMenuOpen" class="shrink-0 size-4 pointer-events-none"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                    <svg *ngIf="isMenuOpen" class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
+                    <svg *ngIf="isMenuOpen" class="shrink-0 size-4 pointer-events-none"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
-
+            <!-- logo  -->
             <a class="flex items-center text-2xl font-semibold focus:outline-none focus:opacity-80 transition-opacity duration-300 dark:bg-slate-400 rounded-lg p-1"
                 href="#" aria-label="Brand">
                 <img class="h-10" src="../../../../assets/logo.png" alt="Logo">
@@ -48,8 +48,8 @@
 
         <div class="hidden sm:flex sm:items-center gap-4">
             <ng-container *ngFor="let item of navItems">
-                <a class="font-medium hover:text-ED3833 focus:outline-none focus:text-ED3833 transition-colors duration-300"
-                    href="{{ item.link }}">
+                <a class="font-medium text-base hover:text-palette-primary focus:outline-none  transition-colors duration-300"
+                    routerLink={{item.link}} routerLinkActive="router-link-active">
                     {{ item.name }}
                 </a>
             </ng-container>
@@ -80,8 +80,8 @@
          }">
         <div class="flex flex-col py-2 px-4">
             <ng-container *ngFor="let item of navItems">
-                <a class="py-2 font-normal hover:text-ED3833 focus:outline-none focus:text-ED3833 transition-colors duration-300"
-                    href="{{ item.link }}">
+                <a class="py-2 font-normal text-base hover:text-palette-primary focus:outline-none focus:text-palette-primary transition-colors duration-300"
+                    routerLink={{item.link}} routerLinkActive="router-link-active">
                     {{ item.name }}
                 </a>
             </ng-container>
