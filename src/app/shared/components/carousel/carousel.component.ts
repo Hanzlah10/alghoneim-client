@@ -10,11 +10,26 @@ import { Component } from '@angular/core';
 })
 export class CarouselComponent {
   slides = [
-    '../../../../assets/carousel/sale1.webp',
-    '../../../../assets/carousel/sale2.webp',
-    // '../../../../assets/carousel/sale3.webp',
-    '../../../../assets/carousel/sale5.webp',
-    '../../../../assets/carousel/sale4.webp',
+    {
+      imageUrl: '../../../../assets/carousel/sale1.webp',
+      title: 'Summer Sale Spectacular!',
+      description: 'Enjoy up to 50% off on all summer essentials. Limited time offer!'
+    },
+    {
+      imageUrl: '../../../../assets/carousel/sale2.webp',
+      title: 'New Arrivals: Fall Collection',
+      description: 'Discover our latest styles for the upcoming season. Shop now!'
+    },
+    {
+      imageUrl: '../../../../assets/carousel/sale5.webp',
+      title: 'Exclusive Online Deals',
+      description: 'Shop from the comfort of your home and save big on our online exclusives.'
+    },
+    {
+      imageUrl: '../../../../assets/carousel/sale4.webp',
+      title: 'Clearance: Last Chance',
+      description: "Final reductions on clearance items. Don't miss out on these incredible savings!"
+    }
   ];
 
   currentSlide = 0;

@@ -1,0 +1,39 @@
+<div class="relative w-full mx-auto overflow-hidden h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px]">
+    <div class="flex transition-transform duration-500 h-full"
+        [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+        <div *ngFor="let slide of slides" class="relative min-w-full h-full">
+            <img [src]="slide.imageUrl" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div
+                    class="text-center p-3 sm:p-4 bg-palette-fill/70 dark:bg-palette-dark/70 backdrop-blur-md rounded-lg shadow-lg w-full max-w-[90%] sm:max-w-lg">
+                    <h2 class="text-xl sm:text-2xl font-bold text-palette-primary mb-1 sm:mb-2">{{slide.title}}</h2>
+                    <p class="text-palette-base dark:text-palette-mute text-sm sm:text-base">{{slide.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="absolute inset-y-0 left-0 right-0 flex justify-between items-center px-2 sm:px-4">
+        <button
+            class="rounded-full p-2 sm:p-3 bg-palette-fill dark:bg-palette-dark shadow-md hover:bg-palette-card dark:hover:bg-palette-card transition-colors duration-300"
+            (click)="prevSlide()">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-palette-primary" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button
+            class="rounded-full p-2 sm:p-3 bg-palette-fill dark:bg-palette-dark shadow-md hover:bg-palette-card dark:hover:bg-palette-card transition-colors duration-300"
+            (click)="nextSlide()">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-palette-primary" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+    </div>
+    <div class="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3">
+        <span *ngFor="let slide of slides; let i = index"
+            [ngClass]="{'bg-palette-primary': i === currentSlide, 'bg-palette-fill dark:bg-palette-card': i !== currentSlide}"
+            class="w-2 h-2 sm:w-3 sm:h-3 rounded-full cursor-pointer transition-colors duration-300 shadow-md"
+            (click)="selectSlide(i)"></span>
+    </div>
+</div>
