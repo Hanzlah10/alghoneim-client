@@ -15,10 +15,13 @@
                 <div *ngFor="let product of getVisibleProducts(); let i = index" class="flex-shrink-0"
                     [style.width.%]="100 / visibleProducts">
                     <div
-                        class="h-64 sm:h-72 lg:h-80 m-2 shadow-lg backdrop-filter backdrop-blur-[10px] bg-palette-card opacity-85 rounded-md flex flex-col items-center justify-center  hover:shadow-lg transition-shadow duration-300">
+                        class="h-64 sm:h-72 lg:h-80 m-2 shadow-lg backdrop-filter backdrop-blur-[10px] bg-[#d0eef4b8] dark:bg-[#0909099d]  rounded-md flex flex-col items-center justify-center  hover:shadow-lg transition-shadow duration-300 relative">
+                        <span class="absolute  -right-2 -top-2 h-8 w-8 rounded-full bg-red-400">
+                            <img src="../../../../assets/discount.webp" alt="">
+                        </span>
                         <div class="overflow-hidden rounded-t-lg">
                             <img [src]="product.image" [alt]="product.title"
-                                class="w-48 h-48 object-cover hover:scale-110 bg-opacity-80 transition-all duration-200">
+                                class="w-48 h-48 object-cover hover:scale-110  transition-all duration-200">
                         </div>
                         <div class="p-4 text-center">
                             <h2 class="text-lg font-semibold text-palette-base">{{ product.title }}</h2>
