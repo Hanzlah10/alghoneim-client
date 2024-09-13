@@ -65,7 +65,7 @@ export class FeaturedCarouselComponent implements OnInit, OnDestroy {
   startAutoScroll() {
     this.interval = setInterval(() => {
       this.next();
-    }, 6000);
+    }, 4000);
   }
 
   stopAutoScroll() {
