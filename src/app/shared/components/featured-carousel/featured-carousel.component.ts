@@ -90,9 +90,9 @@ export class FeaturedCarouselComponent implements OnInit, OnDestroy {
     if (this.touchStartX !== null) {
       const touchEndX = event.changedTouches[0].clientX;
       const diff = touchEndX - this.touchStartX;
-      if (diff > 50) {
+      if (diff > 20) {
         this.prev();
-      } else if (diff < -50) {
+      } else if (diff < -20) {
         this.next();
       }
       this.touchStartX = null;
